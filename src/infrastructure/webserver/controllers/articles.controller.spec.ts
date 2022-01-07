@@ -1,4 +1,4 @@
-import articles from "./articles.router";
+import articles from "./articles.controller";
 
 describe("articles.ts", () => {
   test("Deve retornar uma lista de artigos quando a request for válida", () => {

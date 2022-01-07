@@ -1,5 +1,5 @@
 import { Express, Request, Response } from "express";
-import articles from "../../app/routes/articles.router";
+import articles from "../controllers/articles.controller";
 
 export default (app: Express): void => {
   app.get("/", (req: Request, res: Response) => {
