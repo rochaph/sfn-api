@@ -1,7 +1,9 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es6: true,
+    node: true,
+    commonjs: true,
   },
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   parser: "@typescript-eslint/parser",
@@ -18,5 +20,6 @@ module.exports = {
     "*.config.ts",
     "*.config.js",
     "/node_modules/",
+    "/scripts/",
   ],
 };

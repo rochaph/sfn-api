@@ -1,9 +1,24 @@
-FROM node:lts-alpine
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
-EXPOSE 3000
-RUN chown -R node /usr/src/app
+FROM node:lts-alpine as base
+
+COPY ["package.json", "tsconfig.json", "package-lock.json*", "./"]
+
+RUN npm install
+
+COPY src ./src
+
+RUN npm run build
+
+FROM base as final
+
+ENV NODE_ENV=production
+WORKDIR /app
+
+COPY --from=base --chown=node ./dist ./
+COPY .env ./
+
+RUN npm prune --production
+
 USER node
-CMD ["npm", "start"]
+EXPOSE 3000
+
+CMD ["node","index.js"]

@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { ArticleEntity } from "../../../domain/article";
+import { ArticleParams } from "../../../application/article/domain/article";
 
-const schema = new Schema<ArticleEntity>(
+const schema = new Schema<ArticleParams>(
   {
     id: { type: Number, required: true },
     featured: { type: Boolean, required: true },
@@ -11,26 +11,24 @@ const schema = new Schema<ArticleEntity>(
     newsSite: { type: String, required: true },
     summary: { type: String, required: true },
     publishedAt: { type: String, required: true },
-    launches: {
-      type: [
-        {
+    launches: [
+      {
+        type: {
           id: String,
           provider: String,
         },
-      ],
-      default: undefined,
-    },
-    events: {
-      type: [
-        {
+      },
+    ],
+    events: [
+      {
+        type: {
           id: String,
           provider: String,
         },
-      ],
-      default: undefined,
-    },
+      },
+    ],
   },
   { autoIndex: true }
 );
 
-export const ArticleModel = model<ArticleEntity>("Article", schema);
+export const ArticleModel = model<ArticleParams>("Article", schema);
