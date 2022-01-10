@@ -13,7 +13,7 @@ export default class ArticleMongoRepository implements ArticleRepository {
     newest: boolean
   ): Promise<Article[]> {
     const articles = await ArticleModel.find()
-      .sort({ publishedAt: newest === true ? "asc" : "desc", id: "asc" })
+      .sort({ publishedAt: newest ? "desc" : "asc", id: "asc" })
       .skip(offset)
       .limit(limit);
 
@@ -28,14 +28,15 @@ export default class ArticleMongoRepository implements ArticleRepository {
   }
 
   async create(article: CreatableArticle): Promise<void> {
-    await ArticleModel.create({ article });
+    console.log(article);
+    await ArticleModel.create(article);
   }
 
   async update(article: UpdatableArticle): Promise<void> {
-    await ArticleModel.updateOne({ id: article.id }, { article });
+    await ArticleModel.findOneAndUpdate({ id: article.id }, article);
   }
 
   async delete(id: number): Promise<void> {
-    await ArticleModel.deleteOne({ id });
+    await ArticleModel.findOneAndDelete({ id });
   }
 }

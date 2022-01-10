@@ -6,6 +6,8 @@ import DeleteArticle from "../../../application/article/usecases/delete-article"
 import ArticleMongoRepository from "../../repositories/article-mongo-repository";
 import ArticleService from "./article.service";
 import Article from "../../../application/article/domain/article";
+import { Schema } from "mongoose";
+import { ArticleModel } from "../../database/models/article.model";
 
 jest.mock("../../../application/article/usecases/list-articles");
 jest.mock("../../../application/article/usecases/get-article");
@@ -41,7 +43,7 @@ describe("article.service", () => {
         featured: false,
         url: "",
         newsSite: "",
-        publishedAt: "",
+        publishedAt: new Date(),
         imageUrl: "",
         launches: [],
         events: [],

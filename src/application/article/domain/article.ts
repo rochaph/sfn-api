@@ -10,7 +10,7 @@ export interface ArticleParams {
   imageUrl: string;
   newsSite: string;
   summary: string;
-  publishedAt: string;
+  publishedAt: Date;
   launches: EventLaunch[];
   events: EventLaunch[];
 }
@@ -23,7 +23,7 @@ export default class Article {
   public imageUrl: string;
   public newsSite: string;
   public summary: string;
-  public publishedAt: string;
+  public publishedAt: Date;
   public launches: EventLaunch[];
   public events: EventLaunch[];
 

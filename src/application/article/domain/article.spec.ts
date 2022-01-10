@@ -7,7 +7,7 @@ describe("article", () => {
       featured: false,
       url: "",
       newsSite: "",
-      publishedAt: "",
+      publishedAt: new Date(),
       imageUrl: "",
       launches: [],
       events: [],
