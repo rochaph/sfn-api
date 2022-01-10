@@ -13,7 +13,7 @@ Space Flight News Articles Information
 > Estrutura:
 
 ```
-syscor-front
+sfn-api
 +   dist                            # Build sistema
 |_____  src                         # Pasta raiz do projeto
   |________   application             # CSS|SASS / Imagens / Icones / Outras coisas
