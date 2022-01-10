@@ -51,14 +51,17 @@ export default class ArticleController implements Controller {
   }
 
   private listAll = async (
-    req: Request & { query: { start: string; limit: string; newest: string } },
+    req: Request & {
+      query: { start: string; limit: string; newest: string; title?: string };
+    },
     res: Response
   ): Promise<Response> => {
-    const { start, limit, newest } = req.query;
+    const { start, limit, newest, title } = req.query;
     const articles = await this.service.findAllArticles(
       parseInt(start),
       parseInt(limit),
-      newest === "true"
+      newest === "true",
+      title
     );
     return res.status(200).json(articles);
   };

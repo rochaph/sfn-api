@@ -4,6 +4,7 @@ export const validateGetAllArticles: Schema = Joi.object().keys({
   start: Joi.number().required(),
   limit: Joi.number().required(),
   newest: Joi.boolean().default(true),
+  title: Joi.string(),
 });
 
 export const validateCreateArticle: Schema = Joi.object().keys({

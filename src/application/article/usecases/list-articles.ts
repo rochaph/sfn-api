@@ -11,8 +11,9 @@ export default class ListArticle {
   public async handle(
     offset: number,
     limit: number,
-    newest: boolean
+    newest: boolean,
+    title?: string
   ): Promise<Article[]> {
-    return this.repository.findAll(offset, limit, newest);
+    return this.repository.findAll(offset, limit, newest, title);
   }
 }

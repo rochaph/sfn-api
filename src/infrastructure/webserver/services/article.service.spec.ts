@@ -6,8 +6,6 @@ import DeleteArticle from "../../../application/article/usecases/delete-article"
 import ArticleMongoRepository from "../../repositories/article-mongo-repository";
 import ArticleService from "./article.service";
 import Article from "../../../application/article/domain/article";
-import { Schema } from "mongoose";
-import { ArticleModel } from "../../database/models/article.model";
 
 jest.mock("../../../application/article/usecases/list-articles");
 jest.mock("../../../application/article/usecases/get-article");
@@ -24,7 +22,7 @@ describe("article.service", () => {
   });
   test("should call ListArticle handler", () => {
     const spy = jest.spyOn(ListArticle.prototype, "handle");
-    service.findAllArticles(0, 0, false);
+    service.findAllArticles(0, 0, false, "");
     expect(spy).toBeCalled();
   });
 

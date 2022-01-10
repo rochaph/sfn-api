@@ -20,10 +20,11 @@ export default class ArticleService {
   public async findAllArticles(
     offset: number,
     limit: number,
-    newest: boolean
+    newest: boolean,
+    title?: string
   ): Promise<Article[]> {
     const useCase = new ListArticle(this.repository);
-    return useCase.handle(offset, limit, newest);
+    return useCase.handle(offset, limit, newest, title);
   }
 
   public async findArticleById(id: number): Promise<Article | null> {

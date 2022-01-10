@@ -10,9 +10,16 @@ export default class ArticleMongoRepository implements ArticleRepository {
   async findAll(
     offset: number,
     limit: number,
-    newest: boolean
+    newest: boolean,
+    title?: string
   ): Promise<Article[]> {
-    const articles = await ArticleModel.find()
+    const filters: { title?: { $regex: string } } = {};
+
+    if (title) {
+      filters.title = { $regex: `.*${title}.*` };
+    }
+
+    const articles = await ArticleModel.find(filters)
       .sort({ publishedAt: newest ? "desc" : "asc", id: "asc" })
       .skip(offset)
       .limit(limit);
