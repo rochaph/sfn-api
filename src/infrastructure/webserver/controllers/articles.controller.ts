@@ -85,7 +85,10 @@ export default class ArticleController implements Controller {
   };
 
   private update = async (
-    req: Request & { params: { id: string }; body: UpdatableArticle },
+    req: Request & {
+      params: { id: string };
+      body: Omit<UpdatableArticle, "id">;
+    },
     res: Response
   ): Promise<Response> => {
     const { id } = req.params;
@@ -93,7 +96,7 @@ export default class ArticleController implements Controller {
     const article = await this.service.findArticleById(parseInt(id));
     if (!article) return res.status(404).json("Not found");
 
-    await this.service.updateArticle(req.body);
+    await this.service.updateArticle({ id: parseInt(id), ...req.body });
 
     return res.status(204).end();
   };
