@@ -14,10 +14,10 @@ Space Flight News Articles Information
 
 ```
 sfn-api
-+   dist                            # Build sistema
-|_____  src                         # Pasta raiz do projeto
-  |________   application             # CSS|SASS / Imagens / Icones / Outras coisas
-      |________   modulo
++   dist                              # Build sistema
+|_____  src                           # Pasta raiz do projeto
+  |________   application             
+      |________   modulo              # Modulos do projeto
           |________   domain          # Domínios do modulo
           |________   ports           # Interfaces para infra implementar
           |________   usecases        # Casos de usos do modulo
