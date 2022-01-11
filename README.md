@@ -2,6 +2,16 @@
 
 Space Flight News Articles Information
 
+API CRUD de artigos aeroespaciais
+
+Tecnologias utilizadas:
+- Node
+- Typescript
+- Jest
+- Commitizen
+- Docker
+- Nodemailer
+
 #### 1. Instalando o sistema:
 
 ```bash
@@ -39,3 +49,7 @@ sfn-api
 ```bash
 docker-compose up -d --build
 ```
+
+#### 3. Documentação:
+
+Acesse a documentação da api na url /api-docs
